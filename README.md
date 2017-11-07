@@ -3,10 +3,10 @@
 AVI is an open-source project designed to serve as a complete AVL system for your transit agency, when combined with Android devices installed on transit vehicles.
 
 AVI has two primary external input requirements:
-  * A planned schedule in (GTFS)[https://developers.google.com/transit/gtfs/] format.
+  * A planned schedule in [GTFS](https://developers.google.com/transit/gtfs/) format.
   * Daily trip assignments for each vehicle/device.
 
-The primary data output of AVI is a (GTFS realtime (GTFS-rt))[https://developers.google.com/transit/gtfs-realtime/] feed of vehicle locations and estimated arrival predictions. This feed is suitable for use in (OneBusAway)[http://onebusaway.org/] or other passenger information applications.
+The primary data output of AVI is a [GTFS realtime (GTFS-rt)](https://developers.google.com/transit/gtfs-realtime) feed of vehicle locations and estimated arrival predictions. This feed is suitable for use in [OneBusAway](http://onebusaway.org/) or other passenger information applications.
 
 Internally, AVI consists of several main components:
 
@@ -16,7 +16,7 @@ Internally, AVI consists of several main components:
 4. An MQTT broker for real-time messaging.
 5. A Postgres database.
 
-AVI is a complex system with a large number of moving parts, and familiarity with Java, Android, Python, SQL, and database and server administration will be useful if not critical in deploying and maintaining it. AVI was originally developed by (VIA Analytics)[www.v-a.io].
+AVI is a complex system with a large number of moving parts, and familiarity with Java, Android, Python, SQL, and database and server administration will be useful if not critical in deploying and maintaining it. AVI was originally developed by [VIA Analytics](www.v-a.io).
 
 ## Deployment procedure
 
@@ -44,9 +44,9 @@ During the preparation stage, you should choose a “shortname” for your agenc
 
 ## MQTT broker
 
-Real-time data in AVI generally flows through (MQTT)[http://mqtt.org/], which is a lightweight real-time pub/sub messaging mechanism with a single central “message broker” and a potentially large number of connected clients. The clients can “publish” messages to specific topics and/or “subscribe” to specific topics to receive any published messages in real-time.
+Real-time data in AVI generally flows through [MQTT](http://mqtt.org/), which is a lightweight real-time pub/sub messaging mechanism with a single central “message broker” and a potentially large number of connected clients. The clients can “publish” messages to specific topics and/or “subscribe” to specific topics to receive any published messages in real-time.
 
-We have successfully used the (Mosquitto MQTT broker)[https://mosquitto.org/] in the past, which is part of the Eclipse open-source project.
+We have successfully used the [Mosquitto MQTT broker](https://mosquitto.org/) in the past, which is part of the Eclipse open-source project.
 
 As written, the code does not use SSL security for MQTT connections. If you do want to use SSL, modifications would have to be made to AVI Vehicle, AVI Server, and the Python data utility scripts `pb_to_json` and `json_to_postgres`. You would also need to generate SSL keys and distribute those with the various scripts.
 
@@ -54,7 +54,7 @@ If you do not use SSL security, we recommend that you use the configuration mech
 
 ## Postgres database
 
-Various kinds of data are in the central AVI database, including historical locations, arrival and departure events, daily trip assignments, and schedule information. We use the open-source (Postgres SQL database)[https://www.postgresql.org/]. Instructions for installing and deploying a Postgres database can be found online. We have used (Amazon RDS)[https://aws.amazon.com/rds/postgresql/] successfully in the past. After the database server is initially prepared, create a new Postgres database called <agency_shortname>. The table schemas are stored in the `pg_schema` folder. To prepare the empty tables, log into the agency AVI database with `psql` and run `\ir /path/to/create_all.sql`.
+Various kinds of data are in the central AVI database, including historical locations, arrival and departure events, daily trip assignments, and schedule information. We use the open-source [Postgres SQL database](https://www.postgresql.org/). Instructions for installing and deploying a Postgres database can be found online. We have used [Amazon RDS](https://aws.amazon.com/rds/postgresql/) successfully in the past. After the database server is initially prepared, create a new Postgres database called <agency_shortname>. The table schemas are stored in the `pg_schema` folder. To prepare the empty tables, log into the agency AVI database with `psql` and run `\ir /path/to/create_all.sql`.
 
 Make sure that you choose an appropriate size for your database. The largest contributor to the size of the database will be the archived raw locations. Each location will require roughly 130 bytes to store in Postgres, and each Android device will generate approximately 5800 raw locations per day (using the default 15-second location cadence). This comes to 750 kB per day, and thus an agency with 100 vehicles would generate 75 MB of raw location data per day. Including other types of data, this quantity could increase by a factor of 2. Thus, to maintain a reasonable database size, old data will need to be backed up and removed from the primary database on a regular basis.
 
@@ -62,7 +62,7 @@ Make sure that you choose an appropriate size for your database. The largest con
 
 **Note**: the following deployment suggestions assumes that you are using a Linux or Unix server. We have not used Windows servers, and some of this advice will likely have to be modified in that environment.
 
-Each of the included Python utilities has a set of dependencies. We highly recommend managing these dependencies using (Python virtual environments)[https://virtualenv.pypa.io/en/stable/] and the (pip package manager)[https://pypi.python.org/pypi/pip]. Use of virtual environments allows the administrator to maintain a separate set of dependencies for each script.
+Each of the included Python utilities has a set of dependencies. We highly recommend managing these dependencies using [Python virtual environments](https://virtualenv.pypa.io/en/stable/) and the [pip package manager](https://pypi.python.org/pypi/pip). Use of virtual environments allows the administrator to maintain a separate set of dependencies for each script.
 
 We recommend installing `pip` globally using your distribution’s package manager, and then installing `virtualenv` globally using `pip`.
 
@@ -76,7 +76,7 @@ To run a given script, you must either first activate the relevant virtual envir
 
 ### Deployment of real-time utilities
 
-A few utilities need to be running permanently for message routing to work properly. For server administration and monitoring, we have used a combination of (Upstart)[http://upstart.ubuntu.com/] and (Monit)[https://mmonit.com/monit/]. Upstart is an Ubuntu-specific utility which simplifies the procedure of starting or starting certain scripts automatically. Other Linux distributions provide similar functionality via different utilities.
+A few utilities need to be running permanently for message routing to work properly. For server administration and monitoring, we have used a combination of [Upstart](http://upstart.ubuntu.com/) and [Monit](https://mmonit.com/monit/). Upstart is an Ubuntu-specific utility which simplifies the procedure of starting or starting certain scripts automatically. Other Linux distributions provide similar functionality via different utilities.
 
 Monit is a more full-featured monitoring utility, which can be configured to automatically restart scripts which have crashed, and send email or other notifications to an administrator when problems are detected. Monit would need to be installed, e.g. via your distribution’s package manager. Monit requires a process ID file, or pidfile, to know which Linux process it should be monitoring for a given script. Each of the Python utilities can be configured to write such a pidfile. The Java-based AVI Server code should be managed similarly.
 
@@ -127,7 +127,7 @@ We strongly recommend that these devices be rooted. Having root privileges allow
 
 We have used consumer-grade Android devices with previous installations successfully. They may be cheaper and easier to procure in small quantities. However, many consumer devices are quite inconvenient to root. They may also be more difficult to procure in bulk, or to equip with cellular data connections. Finally, consumer-grade hardware may be less sturdy than enterprise-grade hardware, though we have used consumer-grade hardware for several years in existing projects with fairly minimal repair/replacement needs.
 
-It will likely be useful to have a mechanism to update AVI Vehicle remotely, assuming you use rooted devices. By default, AVI Vehicle comes integrated with (Push-Link)[https://www.pushlink.com/], which is a commercial web service (with which we have no affiliation) providing remote update functionality for Android devices. You may prefer to use another remote update mechanism or build your own, but this will require modifications to the Android code.
+It will likely be useful to have a mechanism to update AVI Vehicle remotely, assuming you use rooted devices. By default, AVI Vehicle comes integrated with [Push-Link](https://www.pushlink.com/), which is a commercial web service (with which we have no affiliation) providing remote update functionality for Android devices. You may prefer to use another remote update mechanism or build your own, but this will require modifications to the Android code.
 
 Every Android device has a unique serial number. We use this serial number as the “device ID” in various places, most importantly the messages sent by the AVI Vehicle devices. For a given device, this can be determined either by navigating to “Settings” -> “Device Info” -> “Status” on the device, or by connecting the device to a computer and running the `adb devices` command. When installing AVI Vehicle, make a note of the device ID of each device and the corresponding vehicle ID of the vehicle that it is installed in. These associations must be stored in the `devices` table of the Postgres database.
 
@@ -139,7 +139,7 @@ All the libraries required by AVI Server come bundled as JAR files, with the exc
 
 AVI Server takes two configuration files as inputs. The first is low-level, and contains information required to connect to the Postgres database, the MQTT broker, and the local SQLite GTFS bundle. The second configuration file is high-level, and contains parameters controlling the detailed projection and event generation, such as the agency’s time zone, the minimum number and frequency of locations received, typical vehicle speeds, the size of buffer zones around stops, how much delay is acceptable, etc. Example configuration files are provided but they will need to be modified to work for your agency.
 
-To run AVI Server in production, we recommend a combination of Upstart+Monit, similar to the Python utility scripts,. Note that if you wish to use Monit for monitoring, you will have to wrap the execution of the JAR in a shell script (e.g. bash) which also writes its own process ID to a file. We recommend an Upstart script along the lines of (this one)[http://www.jcgonzalez.com/linux-java-service-wrapper-example].
+To run AVI Server in production, we recommend a combination of Upstart+Monit, similar to the Python utility scripts,. Note that if you wish to use Monit for monitoring, you will have to wrap the execution of the JAR in a shell script (e.g. bash) which also writes its own process ID to a file. We recommend an Upstart script along the lines of [this one](http://www.jcgonzalez.com/linux-java-service-wrapper-example).
 
 ## GTFS-rt feed generator
 
