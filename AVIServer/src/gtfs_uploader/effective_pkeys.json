@@ -1,0 +1,17 @@
+{
+  "agency" : ["agency_id"],
+  "calendar" : ["service_id"],
+  "calendar_dates" : ["service_id", "date", "exception_type"],
+  "fare_attributes" : ["fare_id"],
+  "fare_rules" : ["route_id", "origin_id", "destination_id", "contains_id"],
+  "feed_info" : ["feed_publisher_name", "feed_publisher_url", "feed_lang",
+		 "feed_start_date", "feed_end_date", "feed_version" ],
+  "frequencies" : ["trip_id", "start_time"],
+  "routes" : ["route_id", "agency_id"],
+  "shapes" : ["shape_id", "shape_pt_sequence"],
+  "stop_times" : ["trip_id", "stop_sequence"],
+  "stops" : ["stop_id"],
+  "transfers" : ["from_stop_id", "to_stop_id", "transfer_type",
+		 "min_transfer_time"],
+  "trips" : ["trip_id"]
+}

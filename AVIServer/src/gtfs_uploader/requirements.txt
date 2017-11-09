@@ -1,0 +1,4 @@
+Shapely==1.5.17
+argparse==1.4.0
+psycopg2==2.6.2
+pyproj==1.9.5.1
