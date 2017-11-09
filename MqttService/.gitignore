@@ -1,0 +1,31 @@
+# built application files
+*.apk
+*.ap_
+
+# files for the dex VM
+*.dex
+
+# Java class files
+*.class
+*.classpath
+
+# generated files
+bin/
+gen/
+
+# Local configuration file (sdk path, etc)
+local.properties
+.classpath
+.project
+
+# Settings folder
+.settings/
+
+#DS_Store
+.DS_Store
+
+#lint
+lint.xml
+
+# protoc for win32
+*.exe
