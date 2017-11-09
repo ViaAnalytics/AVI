@@ -1,0 +1,10 @@
+<resources>
+    <string name="activity_title">AVI Vehicle Tracking</string>
+    <string name="app_name">AVI Vehicle Tracking</string>
+    <string name="gpsFailureIconDesc">GPS failure</string>
+    <string name="transmittingData">Transmitting location data.</string>
+    <string name="inactiveGPS">Trying to get GPS lock.</string>
+    <string name="inactiveComm">No internet connection.</string>
+    <string name="sleepMode">Sleep mode.</string>
+    <string name="dischargingBattery">Battery discharging.</string>
+</resources>

@@ -1,0 +1,60 @@
+option java_package = "com.via.avi.messages";
+option java_outer_classname = "AviMessages";
+
+message RawLocationMessage {
+	required string device_id = 1;
+	required int64 ts = 2;
+	optional double latitude = 3;
+	optional double longitude = 4;
+	optional float speed = 5;
+	optional float bearing = 6;
+	optional float accuracy = 7;
+}
+
+message ExistMessage {
+	// BatteryStatus, BatteryPlugged, BatteryHealth all use the Android
+	// values for status numbers.
+	enum BatteryStatus {
+	UNKNOWN = 1;
+	CHARGING = 2;
+	DISCHARGING = 3;
+	NOT_CHARGING = 4;
+	FULL = 5;
+	}
+
+	enum BatteryPlugged {
+	UNPLUGGED = 0;
+	AC = 1;
+	USB = 2;
+	WIRELESS = 4;
+	}
+	
+	enum BatteryHealth {
+	UNKNOWN_HEALTH = 1;
+	GOOD = 2;
+	OVERHEAT = 3;
+	DEAD = 4;
+	OVER_VOLTAGE = 5;
+	UNSPECIFIED_FAILURE = 6;
+	COLD = 7;
+	}
+
+	required string device_id = 1;
+	required int64 ts = 2;
+
+	optional double battery_level = 3;
+	optional BatteryPlugged battery_plugged = 4;
+	optional BatteryStatus battery_status = 5;
+	optional BatteryHealth battery_health = 6;
+	optional int32 battery_temperature = 7;
+	
+	optional int64 last_gps_time = 8;
+	optional double latitude = 9;
+	optional double longitude = 10;
+	
+	optional int64 sent_time = 11;
+	optional bool communication = 12;
+	optional bool mqtt = 13;
+	
+	optional string app_version = 14;
+}

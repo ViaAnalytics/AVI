@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/countdownBackground"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:background="#000000" >        
+    
+    <TextView 
+        android:id="@+id/blackBackgroundText"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_centerVertical="true"
+        android:gravity="center"
+        android:textColor="#ffffffff"
+        android:textSize="210sp" />
+
+    <ImageView
+        android:id="@+id/gps_failure"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="21dp"
+        android:contentDescription="@string/gpsFailureIconDesc"
+        android:gravity="center_horizontal"
+        android:scaleType="centerInside"
+        android:src="@drawable/gps_failure"
+        android:visibility="invisible" />
+
+</RelativeLayout>

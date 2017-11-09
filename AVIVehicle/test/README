@@ -1,0 +1,40 @@
+Create and configure test Java project (not an Android Application Project)
+	File -> New -> Java Project ...
+	Project Name: AviVehicleTests
+	Uncheck "Use default location" and choose the .../AviVehicle/test folder.
+
+Add dependency on the Android project
+	Select "Projects" tab at the top of the New Java Project dialog
+	Click "Add ..."
+	Check "AviVehicle"
+	Click "OK"
+	
+Add required libraries
+	Select "Libraries" tab at the top of the New Java Project dialog
+	Robolectric jars
+		Click "Add JARS"
+		Select all jars from within AviVehicle/libs/test (including mockito), then click "OK"
+	Android jars
+		Click "Add External Jars"
+		Navigate to your SDK install directory, then select "platforms/android-15/android.jar", choosing the API version to match the one you chose for Target when creating the Android project.
+		Click "Open" to add android.jar
+	JUnit
+		Click "Add Library"
+		Select JUnit, then click "Next"
+		Change the JUnit version to 4 (Robolectric requires JUnit 4), then click "Finish"
+
+Set classpath order
+	Select "Order and Export" tab at the top of the New Java Project dialog
+	Select android.jar, and move it down so that it appears below the robolectric jars
+	Also move JUnit so that it is above android.jar
+	Click "Finish", closing the new Java project dialog
+	
+Most of these settings can be changed later by right-clicking your test project, selecting "Build path" -> "Configure Build Path"
+
+If the AviVehicle project is git tracked, and the new AviVehicleTests is not:
+	Right click on AviVehicleTests
+	Click Team -> Share Project ...
+	Choose git
+	See if the default checked "Use or create repository in parent folder of project" (which is what we typically do for our projects)
+	Click "Finish"
+	

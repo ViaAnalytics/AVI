@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry exported="true" kind="lib" path="/Tempo/libs/test/mockito-all-1.9.5.jar"/>
+	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
+	<classpathentry exported="true" kind="lib" path="/Users/jacob/android-sdks/platforms/android-18/android.jar"/>
+	<classpathentry exported="true" kind="lib" path="/Tempo/libs/test/robolectric-2.4-jar-with-dependencies.jar"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/AviVehicle"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

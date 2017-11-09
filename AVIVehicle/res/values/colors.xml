@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="mdl_red">#F44336</color>
+    <color name="mdl_blue">#2196F3</color>
+    <color name="mdl_light_green">#8BC34A</color>
+    <color name="mdl_green">#4CAF50</color>
+    <color name="mdl_dark_blue">#283593</color>
+    <color name="mdl_purple">#9C27B0</color>
+</resources>
